@@ -1,0 +1,36 @@
+<?php
+##
+## Example configuration file
+##
+
+$config['tour_introjs_theme'] = 'flattener';
+$config['tour_walcome'] = true;
+$config['tour_taskbar'] = true;
+$config['tour_taskbar_buttons'] = array(
+	'mail' => true,
+	'addressbook' => true,
+	'cloud' => true,
+	'calendar' => true,
+	'tasklist' => true,
+	'settings' => true,
+);
+$config['tour_toolbar'] = true;
+$config['tour_toolbar_buttons'] = array(
+	'archive' => true,
+	'junk' => true,
+);
+$config['tour_folders'] = true;
+$config['tour_quota'] = true;
+$config['tour_messages_view'] = true;
+$config['tour_messages_threads'] = true;
+$config['tour_settings'] = array(
+	'preferences' => true,
+	'folders' => true,
+	'identities' => true,
+	'responses' => true,
+	'pluginmanagesieve' => true,
+	'pluginmanagesievevacation' => true,
+	'pluginpassword' => true,
+);
+
+?>

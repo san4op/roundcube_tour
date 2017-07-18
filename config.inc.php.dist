@@ -1,0 +1,27 @@
+<?php
+##
+## Default configuration file
+##
+
+$config['tour_introjs_theme'] = false;
+$config['tour_walcome'] = true;
+$config['tour_taskbar'] = true;
+$config['tour_taskbar_buttons'] = array(
+	'mail' => true,
+	'addressbook' => true,
+	'settings' => true,
+);
+$config['tour_toolbar'] = true;
+$config['tour_toolbar_buttons'] = array();
+$config['tour_folders'] = true;
+$config['tour_quota'] = false;
+$config['tour_messages_view'] = true;
+$config['tour_messages_threads'] = true;
+$config['tour_settings'] = array(
+	'preferences' => true,
+	'folders' => true,
+	'identities' => true,
+	'responses' => true,
+);
+
+?>

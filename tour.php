@@ -80,6 +80,12 @@ class tour extends rcube_plugin
 			if (!in_array('markasjunk', $plugins) && !in_array('markasjunk2', $plugins)) {
 				$toolbar_buttons['junk'] = false;
 			}
+			if (!in_array('managesieve', $plugins)) {
+				$tour_settings['pluginmanagesieve'] = false;
+				$tour_settings['pluginmanagesievevacation'] = false;
+			}
+			if (!in_array('password', $plugins)) {
+				$tour_settings['pluginpassword'] = false;
 			}
 
 			// make enviroment

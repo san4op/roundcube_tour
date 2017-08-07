@@ -80,6 +80,7 @@ class tour extends rcube_plugin
 			if (!in_array('markasjunk', $plugins) && !in_array('markasjunk2', $plugins)) {
 				$toolbar_buttons['junk'] = false;
 			}
+			}
 
 			// make enviroment
 			$this->api->output->set_env('tour_walcome', $this->rc->config->get('tour_walcome', true));

@@ -59,6 +59,7 @@ class tour extends rcube_plugin
 			$this->load_config();
 			$taskbar_buttons = $this->rc->config->get('tour_taskbar_buttons', array('mail' => true, 'addressbook' => true, 'settings' => true));
 			$toolbar_buttons = $this->rc->config->get('tour_toolbar_buttons', array());
+			$settings_actions = $this->rc->config->get('tour_settings', array('preferences' => true, 'folders' => true, 'identities' => true, 'responses' => true));
 
 			// load localization
 			$this->add_texts('localization/', true);
@@ -74,18 +75,18 @@ class tour extends rcube_plugin
 			if (!in_array('tasklist', $plugins)) {
 				$taskbar_buttons['tasklist'] = false;
 			}
-			if (!in_array('archive', $plugins)) {
-				$taskbar_buttons['archive'] = false;
+			if (!in_array('archive', $plugins) || !$this->rc->config->get('archive_mbox')) {
+				$toolbar_buttons['archive'] = false;
 			}
 			if (!in_array('markasjunk', $plugins) && !in_array('markasjunk2', $plugins)) {
 				$toolbar_buttons['junk'] = false;
 			}
 			if (!in_array('managesieve', $plugins)) {
-				$tour_settings['pluginmanagesieve'] = false;
-				$tour_settings['pluginmanagesievevacation'] = false;
+				$settings_actions['pluginmanagesieve'] = false;
+				$settings_actions['pluginmanagesievevacation'] = false;
 			}
 			if (!in_array('password', $plugins)) {
-				$tour_settings['pluginpassword'] = false;
+				$settings_actions['pluginpassword'] = false;
 			}
 
 			// make enviroment
@@ -98,7 +99,7 @@ class tour extends rcube_plugin
 			$this->api->output->set_env('tour_quota', $this->rc->config->get('tour_quota', true));
 			$this->api->output->set_env('tour_messages_view', $this->rc->config->get('tour_messages_view', true));
 			$this->api->output->set_env('tour_messages_threads', $this->rc->config->get('tour_messages_threads', true));
-			$this->api->output->set_env('tour_settings', $this->rc->config->get('tour_settings', array('preferences' => true, 'folders' => true, 'identities' => true, 'responses' => true)));
+			$this->api->output->set_env('tour_settings', $settings_actions);
 		}
 	}
 

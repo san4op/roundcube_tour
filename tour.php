@@ -88,6 +88,29 @@ class tour extends rcube_plugin
 			if (!in_array('managesieve', $plugins)) {
 				$settings_actions['pluginmanagesieve'] = false;
 				$settings_actions['pluginmanagesievevacation'] = false;
+			} else {
+				if (version_compare(RCMAIL_VERSION, '1.1') >= 0) {
+					if (($managesieve = $this->api->get_plugin('managesieve')) instanceof managesieve) {
+						if ($managesieve->load_config()) {
+							$vacation_mode = (int) $this->rc->config->get('managesieve_vacation');
+							if ($vacation_mode === 2) {
+								$settings_actions['pluginmanagesieve'] = false;
+							}
+							if ($vacation_mode === 0) {
+								$settings_actions['pluginmanagesievevacation'] = false;
+							}
+						} else {
+							$settings_actions['pluginmanagesievevacation'] = false;
+						}
+					} else {
+						$settings_actions['pluginmanagesieve'] = false;
+						$settings_actions['pluginmanagesievevacation'] = false;
+					}
+					unset($managesieve);
+				} else {
+					$settings_actions['pluginmanagesieve'] = false;
+					$settings_actions['pluginmanagesievevacation'] = false;
+				}
 			}
 			if (!in_array('password', $plugins)) {
 				$settings_actions['pluginpassword'] = false;

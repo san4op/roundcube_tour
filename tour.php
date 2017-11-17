@@ -65,7 +65,11 @@ class tour extends rcube_plugin
 			$this->add_texts('localization/', true);
 
 			// check loaded plugins
-			$plugins = $this->api->active_plugins;
+			if (version_compare(RCMAIL_VERSION, '1.1') >= 0) {
+				$plugins = $this->api->active_plugins;
+			} else {
+				$plugins = array_filter((array) $this->rc->config->get('plugins'));
+			}
 			if (!in_array('cloud_button', $plugins)) {
 				$taskbar_buttons['cloud'] = false;
 			}

@@ -1,0 +1,13 @@
+CHANGELOG
+=========
+
+RELEASE 1.1
+-----------
+* Support of 'managesieve' & 'password' plugins
+* Improved checking of enabled plugins
+* Improved compatabile with Roundcube < 1.1.0
+* Update Intro.js to 2.7.0
+
+RELEASE 1.0
+-----------
+* First release

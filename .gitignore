@@ -1,3 +1,4 @@
 .DS_Store
-config.inc.php
+.vscode
 tour.code-workspace
+config.inc.php

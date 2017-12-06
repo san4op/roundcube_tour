@@ -1,6 +1,10 @@
-Roundcube Webmail Tour
+Tour (Roundcube Webmail Plugin)
 ==========
 Plugin for adding a tour to the site.
+
+Translation
+-----------
+You can help me to translate plugin [here](https://www.transifex.com/san4op/tour-roundcube-webmail-plugin/dashboard/).
 
 Donate
 ------

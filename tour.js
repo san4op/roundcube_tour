@@ -101,7 +101,7 @@ if (window.rcmail) {
 				// messageslist
 				if (rcmail.env.tour_messages_view == true)
 					intros.push({
-						element: '#listmenulink',
+						element: (rcmail.env.layout == 'widescreen' ? '#listmenulink' : '.messagelist.fixedcopy #rcmthreads #listmenulink'),
 						intro: rcmail.gettext('tour_messages_view', 'tour'),
 						position: 'bottom'
 					});

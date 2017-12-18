@@ -17,13 +17,13 @@ if (window.rcmail) {
 			if (evt.action == "") {
 
 				// welcome
-				if (rcmail.env.tour_welcome == true)
+				if (rcmail.env.tour.welcome == true)
 					intros.push({
 						intro: rcmail.gettext('welcome', 'tour')
 					});
 
 				// taskbar
-				if (rcmail.env.tour_taskbar == true)
+				if (rcmail.env.tour.taskbar == true)
 					intros.push({
 						element: '#taskbar',
 						intro: rcmail.gettext('taskbar', 'tour'),
@@ -31,7 +31,7 @@ if (window.rcmail) {
 					});
 
 				// taskbar buttons
-				if (rcmail.env.tour_taskbar_buttons)
+				if (rcmail.env.tour.taskbar_buttons)
 					[
 						"mail",
 						"addressbook",
@@ -40,7 +40,7 @@ if (window.rcmail) {
 						"tasklist",
 						"settings"
 					].forEach(function(elm,inx,arr) {
-						if (rcmail.env.tour_taskbar_buttons[elm] != undefined && rcmail.env.tour_taskbar_buttons[elm] == true)
+						if (rcmail.env.tour.taskbar_buttons[elm] != undefined && rcmail.env.tour.taskbar_buttons[elm] == true)
 							intros.push({
 								element: '#taskbar .button-' + elm,
 								intro: rcmail.gettext('taskbar_' + elm, 'tour'),
@@ -49,7 +49,7 @@ if (window.rcmail) {
 					});
 
 				// toolbar
-				if (rcmail.env.tour_toolbar == true)
+				if (rcmail.env.tour.toolbar == true)
 					intros.push({
 						element: '#messagetoolbar',
 						intro: rcmail.gettext('toolbar', 'tour'),
@@ -57,12 +57,12 @@ if (window.rcmail) {
 					});
 
 				// toolbar buttons
-				if (rcmail.env.tour_toolbar_buttons)
+				if (rcmail.env.tour.toolbar_buttons)
 					[
 						"archive",
 						"junk"
 					].forEach(function(elm,inx,arr) {
-						if (rcmail.env.tour_toolbar_buttons[elm] != undefined && rcmail.env.tour_toolbar_buttons[elm] == true)
+						if (rcmail.env.tour.toolbar_buttons[elm] != undefined && rcmail.env.tour.toolbar_buttons[elm] == true)
 							switch(elm) {
 								case "junk":
 									intros.push({
@@ -83,7 +83,7 @@ if (window.rcmail) {
 					});
 
 				// folders
-				if (rcmail.env.tour_folders == true)
+				if (rcmail.env.tour.folders == true)
 					intros.push({
 						element: (rcmail.env.skin == "classic" ? "#mailboxlist-container ul" : "#folderlist-content ul"),
 						intro: rcmail.gettext('folders', 'tour'),
@@ -91,7 +91,7 @@ if (window.rcmail) {
 					});
 
 				// quota
-				if (rcmail.env.tour_quota == true)
+				if (rcmail.env.tour.quota == true)
 					intros.push({
 						element: (rcmail.env.skin == "classic" ? "#quota" : "#quotadisplay"),
 						intro: rcmail.gettext('quota', 'tour'),
@@ -99,13 +99,13 @@ if (window.rcmail) {
 					});
 
 				// messageslist
-				if (rcmail.env.tour_messages_view == true)
+				if (rcmail.env.tour.messages_view == true)
 					intros.push({
 						element: (rcmail.env.layout == 'widescreen' ? '#listmenulink' : '.messagelist.fixedcopy #rcmthreads #listmenulink'),
 						intro: rcmail.gettext('messages_view', 'tour'),
 						position: 'bottom'
 					});
-				if (rcmail.env.tour_messages_threads == true && rcmail.env.skin != "classic")
+				if (rcmail.env.tour.messages_threads == true && rcmail.env.skin != "classic")
 					intros.push({
 						element: '#listcontrols',
 						intro: rcmail.gettext('messages_threads', 'tour'),
@@ -119,7 +119,7 @@ if (window.rcmail) {
 			if (evt.action == "") {
 
 				// settings
-				if (rcmail.env.tour_settings)
+				if (rcmail.env.tour.settings)
 					[
 						"preferences",
 						"folders",
@@ -129,7 +129,7 @@ if (window.rcmail) {
 						"pluginmanagesievevacation",
 						"pluginpassword"
 					].forEach(function(elm,inx,arr) {
-						if (rcmail.env.tour_settings[elm] != undefined && rcmail.env.tour_settings[elm] == true)
+						if (rcmail.env.tour.settings[elm] != undefined && rcmail.env.tour.settings[elm] == true)
 							intros.push({
 								element: '#settingstab' + elm,
 								intro: rcmail.gettext('settings_' + elm, 'tour'),

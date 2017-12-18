@@ -117,16 +117,18 @@ class tour extends rcube_plugin
 			}
 
 			// make enviroment
-			$this->api->output->set_env('tour_welcome', $this->rc->config->get('tour_welcome', true));
-			$this->api->output->set_env('tour_taskbar', $this->rc->config->get('tour_taskbar', true));
-			$this->api->output->set_env('tour_taskbar_buttons', $taskbar_buttons);
-			$this->api->output->set_env('tour_toolbar', $this->rc->config->get('tour_toolbar', true));
-			$this->api->output->set_env('tour_toolbar_buttons', $toolbar_buttons);
-			$this->api->output->set_env('tour_folders', $this->rc->config->get('tour_folders', true));
-			$this->api->output->set_env('tour_quota', $this->rc->config->get('tour_quota', true));
-			$this->api->output->set_env('tour_messages_view', $this->rc->config->get('tour_messages_view', true));
-			$this->api->output->set_env('tour_messages_threads', $this->rc->config->get('tour_messages_threads', true));
-			$this->api->output->set_env('tour_settings', $settings_actions);
+			$this->api->output->set_env('tour', array(
+				'welcome'			=> $this->rc->config->get('tour_welcome', true),
+				'taskbar'			=> $this->rc->config->get('tour_taskbar', true),
+				'taskbar_buttons'	=> $taskbar_buttons,
+				'toolbar'			=> $this->rc->config->get('tour_toolbar', true),
+				'toolbar_buttons'	=> $toolbar_buttons,
+				'folders'			=> $this->rc->config->get('tour_folders', true),
+				'quota'				=> $this->rc->config->get('tour_quota', true),
+				'messages_view'		=> $this->rc->config->get('tour_messages_view', true),
+				'messages_threads'	=> $this->rc->config->get('tour_messages_threads', true),
+				'settings'			=> $settings_actions,
+			));
 		}
 	}
 

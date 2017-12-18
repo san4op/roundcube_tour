@@ -117,7 +117,7 @@ class tour extends rcube_plugin
 			}
 
 			// make enviroment
-			$this->api->output->set_env('tour_walcome', $this->rc->config->get('tour_walcome', true));
+			$this->api->output->set_env('tour_welcome', $this->rc->config->get('tour_welcome', true));
 			$this->api->output->set_env('tour_taskbar', $this->rc->config->get('tour_taskbar', true));
 			$this->api->output->set_env('tour_taskbar_buttons', $taskbar_buttons);
 			$this->api->output->set_env('tour_toolbar', $this->rc->config->get('tour_toolbar', true));

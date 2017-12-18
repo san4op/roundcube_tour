@@ -4,7 +4,7 @@
 ##
 
 $config['tour_introjs_theme'] = false;
-$config['tour_walcome'] = true;
+$config['tour_welcome'] = true;
 $config['tour_taskbar'] = true;
 $config['tour_taskbar_buttons'] = array(
 	'mail' => true,

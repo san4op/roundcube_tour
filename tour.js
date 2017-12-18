@@ -16,17 +16,17 @@ if (window.rcmail) {
 		if (evt.task == "mail") {
 			if (evt.action == "") {
 
-				// walcome
-				if (rcmail.env.tour_walcome == true)
+				// welcome
+				if (rcmail.env.tour_welcome == true)
 					intros.push({
-						intro: rcmail.gettext('tour_walcome', 'tour')
+						intro: rcmail.gettext('welcome', 'tour')
 					});
 
 				// taskbar
 				if (rcmail.env.tour_taskbar == true)
 					intros.push({
 						element: '#taskbar',
-						intro: rcmail.gettext('tour_taskbar', 'tour'),
+						intro: rcmail.gettext('taskbar', 'tour'),
 						position: 'bottom-right-aligned'
 					});
 
@@ -43,7 +43,7 @@ if (window.rcmail) {
 						if (rcmail.env.tour_taskbar_buttons[elm] != undefined && rcmail.env.tour_taskbar_buttons[elm] == true)
 							intros.push({
 								element: '#taskbar .button-' + elm,
-								intro: rcmail.gettext('tour_taskbar_' + elm, 'tour'),
+								intro: rcmail.gettext('taskbar_' + elm, 'tour'),
 								position: 'bottom-right-aligned'
 							});
 					});
@@ -52,7 +52,7 @@ if (window.rcmail) {
 				if (rcmail.env.tour_toolbar == true)
 					intros.push({
 						element: '#messagetoolbar',
-						intro: rcmail.gettext('tour_toolbar', 'tour'),
+						intro: rcmail.gettext('toolbar', 'tour'),
 						position: 'bottom-right-aligned'
 					});
 
@@ -67,7 +67,7 @@ if (window.rcmail) {
 								case "junk":
 									intros.push({
 										element: '#messagetoolbar .button.junk, #messagetoolbar .button.markasjunk2',
-										intro: rcmail.gettext('tour_toolbar_' + elm, 'tour'),
+										intro: rcmail.gettext('toolbar_' + elm, 'tour'),
 										position: 'bottom'
 									});
 									break;
@@ -75,7 +75,7 @@ if (window.rcmail) {
 								default:
 									intros.push({
 										element: '#messagetoolbar .button.' + elm,
-										intro: rcmail.gettext('tour_toolbar_' + elm, 'tour'),
+										intro: rcmail.gettext('toolbar_' + elm, 'tour'),
 										position: 'bottom'
 									});
 									break;
@@ -86,7 +86,7 @@ if (window.rcmail) {
 				if (rcmail.env.tour_folders == true)
 					intros.push({
 						element: (rcmail.env.skin == "classic" ? "#mailboxlist-container ul" : "#folderlist-content ul"),
-						intro: rcmail.gettext('tour_folders', 'tour'),
+						intro: rcmail.gettext('folders', 'tour'),
 						position: 'right'
 					});
 
@@ -94,7 +94,7 @@ if (window.rcmail) {
 				if (rcmail.env.tour_quota == true)
 					intros.push({
 						element: (rcmail.env.skin == "classic" ? "#quota" : "#quotadisplay"),
-						intro: rcmail.gettext('tour_quota', 'tour'),
+						intro: rcmail.gettext('quota', 'tour'),
 						position: 'top'
 					});
 
@@ -102,13 +102,13 @@ if (window.rcmail) {
 				if (rcmail.env.tour_messages_view == true)
 					intros.push({
 						element: (rcmail.env.layout == 'widescreen' ? '#listmenulink' : '.messagelist.fixedcopy #rcmthreads #listmenulink'),
-						intro: rcmail.gettext('tour_messages_view', 'tour'),
+						intro: rcmail.gettext('messages_view', 'tour'),
 						position: 'bottom'
 					});
 				if (rcmail.env.tour_messages_threads == true && rcmail.env.skin != "classic")
 					intros.push({
 						element: '#listcontrols',
-						intro: rcmail.gettext('tour_messages_threads', 'tour'),
+						intro: rcmail.gettext('messages_threads', 'tour'),
 						position: 'top'
 					});
 
@@ -132,7 +132,7 @@ if (window.rcmail) {
 						if (rcmail.env.tour_settings[elm] != undefined && rcmail.env.tour_settings[elm] == true)
 							intros.push({
 								element: '#settingstab' + elm,
-								intro: rcmail.gettext('tour_settings_' + elm, 'tour'),
+								intro: rcmail.gettext('settings_' + elm, 'tour'),
 								position: 'right'
 							});
 					});
@@ -145,10 +145,10 @@ if (window.rcmail) {
 			var intro_complete = 0;
 
 			intro.setOptions({
-				nextLabel: rcmail.gettext('label_next', 'tour'),
-				prevLabel: rcmail.gettext('label_prev', 'tour'),
-				skipLabel: rcmail.gettext('label_skip', 'tour'),
-				doneLabel: rcmail.gettext('label_done', 'tour'),
+				nextLabel: rcmail.gettext('next', 'tour'),
+				prevLabel: rcmail.gettext('prev', 'tour'),
+				skipLabel: rcmail.gettext('skip', 'tour'),
+				doneLabel: rcmail.gettext('done', 'tour'),
 				hidePrev: true,
 				hideNext: true,
 				showStepNumbers: false,

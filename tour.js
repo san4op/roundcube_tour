@@ -10,18 +10,18 @@
  */
 
 if (window.rcmail) {
-	rcmail.addEventListener('init', function(evt) {
+	function tour(manually) {
 		var intros = [];
 
-		if (evt.task == "mail") {
-			if (evt.action == "") {
-
+		if (rcmail.task == "mail") {
+			if (rcmail.env.action == "") {
+	
 				// welcome
 				if (rcmail.env.tour.welcome == true)
 					intros.push({
 						intro: rcmail.gettext('welcome', 'tour')
 					});
-
+	
 				// taskbar
 				if (rcmail.env.tour.taskbar == true)
 					intros.push({
@@ -29,7 +29,7 @@ if (window.rcmail) {
 						intro: rcmail.gettext('taskbar', 'tour'),
 						position: 'bottom-right-aligned'
 					});
-
+	
 				// taskbar buttons
 				if (rcmail.env.tour.taskbar_buttons)
 					[
@@ -40,14 +40,14 @@ if (window.rcmail) {
 						"tasklist",
 						"settings"
 					].forEach(function(elm,inx,arr) {
-						if (rcmail.env.tour.taskbar_buttons[elm] != undefined && rcmail.env.tour.taskbar_buttons[elm] == true)
+						if (typeof rcmail.env.tour.taskbar_buttons[elm] != "undefined" && rcmail.env.tour.taskbar_buttons[elm] == true)
 							intros.push({
 								element: '#taskbar .button-' + elm,
 								intro: rcmail.gettext('taskbar_' + elm, 'tour'),
 								position: 'bottom-right-aligned'
 							});
 					});
-
+	
 				// toolbar
 				if (rcmail.env.tour.toolbar == true)
 					intros.push({
@@ -55,14 +55,14 @@ if (window.rcmail) {
 						intro: rcmail.gettext('toolbar', 'tour'),
 						position: 'bottom-right-aligned'
 					});
-
+	
 				// toolbar buttons
 				if (rcmail.env.tour.toolbar_buttons)
 					[
 						"archive",
 						"junk"
 					].forEach(function(elm,inx,arr) {
-						if (rcmail.env.tour.toolbar_buttons[elm] != undefined && rcmail.env.tour.toolbar_buttons[elm] == true)
+						if (typeof rcmail.env.tour.toolbar_buttons[elm] != "undefined" && rcmail.env.tour.toolbar_buttons[elm] == true)
 							switch(elm) {
 								case "junk":
 									intros.push({
@@ -71,7 +71,7 @@ if (window.rcmail) {
 										position: 'bottom'
 									});
 									break;
-
+	
 								default:
 									intros.push({
 										element: '#messagetoolbar .button.' + elm,
@@ -81,7 +81,7 @@ if (window.rcmail) {
 									break;
 							}
 					});
-
+	
 				// folders
 				if (rcmail.env.tour.folders == true)
 					intros.push({
@@ -89,7 +89,7 @@ if (window.rcmail) {
 						intro: rcmail.gettext('folders', 'tour'),
 						position: 'right'
 					});
-
+	
 				// quota
 				if (rcmail.env.tour.quota == true)
 					intros.push({
@@ -97,7 +97,7 @@ if (window.rcmail) {
 						intro: rcmail.gettext('quota', 'tour'),
 						position: 'top'
 					});
-
+	
 				// messageslist
 				if (rcmail.env.tour.messages_view == true)
 					intros.push({
@@ -111,13 +111,13 @@ if (window.rcmail) {
 						intro: rcmail.gettext('messages_threads', 'tour'),
 						position: 'top'
 					});
-
+	
 			} // end action ""
 		} // end task "mail"
 
-		else if (evt.task == "settings") {
-			if (evt.action == "") {
-
+		else if (rcmail.task == "settings") {
+			if (rcmail.env.action == "") {
+	
 				// settings
 				if (rcmail.env.tour.settings)
 					[
@@ -129,21 +129,21 @@ if (window.rcmail) {
 						"pluginmanagesievevacation",
 						"pluginpassword"
 					].forEach(function(elm,inx,arr) {
-						if (rcmail.env.tour.settings[elm] != undefined && rcmail.env.tour.settings[elm] == true)
+						if (typeof rcmail.env.tour.settings[elm] != "undefined" && rcmail.env.tour.settings[elm] == true)
 							intros.push({
 								element: '#settingstab' + elm,
 								intro: rcmail.gettext('settings_' + elm, 'tour'),
 								position: 'right'
 							});
 					});
-
+	
 			} // end action ""
 		} // end task "settings"
 
 		if (intros.length > 0) {
 			var intro = introJs();
 			var intro_complete = 0;
-
+	
 			intro.setOptions({
 				nextLabel: rcmail.gettext('next', 'tour'),
 				prevLabel: rcmail.gettext('prev', 'tour'),
@@ -158,18 +158,26 @@ if (window.rcmail) {
 				tooltipPosition: "bottom"
 			});
 			intro.addSteps(intros);
-
-			intro.oncomplete(function() {
-				intro_complete = 1;
-				rcmail.http_post('plugin.tour_complete', {task: evt.task, action: evt.action, complete: 2});
-			});
-			intro.onexit(function() {
-				if(intro_complete == undefined || intro_complete == 0) {
-					rcmail.http_post('plugin.tour_complete', {task: evt.task, action: evt.action, complete: 1});
-				}
-			});
-
+	
+			if (typeof manually == "undefined" || manually != true) {
+				intro.oncomplete(function() {
+					intro_complete = 1;
+					rcmail.http_post('plugin.tour_complete', {task: rcmail.task, action: rcmail.env.action, complete: 2});
+				});
+				intro.onexit(function() {
+					if(typeof intro_complete == "undefined" || intro_complete == 0) {
+						rcmail.http_post('plugin.tour_complete', {task: rcmail.task, action: rcmail.env.action, complete: 1});
+					}
+				});
+			}
+	
 			intro.start();
+		}
+	}
+
+	rcmail.addEventListener('init', function(evt) {
+		if (typeof rcmail.env.tour_run != "undefined" && rcmail.env.tour_run == 1) {
+			tour();
 		}
 	});
 }

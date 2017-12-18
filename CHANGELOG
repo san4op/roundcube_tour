@@ -1,6 +1,11 @@
 CHANGELOG
 =========
 
+RELEASE 1.2
+-----------
+* Added a button to manually run tour
+* Small internal changes
+
 RELEASE 1.1
 -----------
 * Support of 'managesieve' & 'password' plugins

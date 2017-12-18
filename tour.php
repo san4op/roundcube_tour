@@ -3,7 +3,7 @@
  * Roundcube Plugin Tour
  * Plugin for adding a tour to the site.
  *
- * @version 1.1
+ * @version 1.2
  * @author Alexander Pushkin <san4op@icloud.com>
  * @copyright Copyright (c) 2017, Alexander Pushkin
  * @link https://github.com/san4op/roundcube_tour

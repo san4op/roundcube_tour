@@ -18,7 +18,6 @@ if (window.rcmail) {
 	
 				// welcome
 				if (rcmail.env.tour.welcome == true)
-
 					intros.push({
 						element: '#rcmbtn105',
 						intro: rcmail.gettext('welcome', 'tour'),

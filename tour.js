@@ -23,6 +23,14 @@ if (window.rcmail) {
 						intro: rcmail.gettext('welcome', 'tour'),
 						position: 'bottom-left-aligned'
 					});
+
+				// support
+				if (rcmail.env.tour.support == true)
+					intros.push({
+						element: '#supportlink',
+						intro: rcmail.gettext('support', 'tour'),
+						position: 'bottom-left-aligned'
+					});
 	
 				// taskbar
 				if (rcmail.env.tour.taskbar == true)

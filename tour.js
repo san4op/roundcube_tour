@@ -19,7 +19,17 @@ if (window.rcmail) {
 				// welcome
 				if (rcmail.env.tour.welcome == true)
 					intros.push({
-						intro: rcmail.gettext('welcome', 'tour')
+						element: '#rcmbtn105',
+						intro: rcmail.gettext('welcome', 'tour'),
+						position: 'bottom-left-aligned'
+					});
+
+				// support
+				if (rcmail.env.tour.support == true)
+					intros.push({
+						element: '#supportlink',
+						intro: rcmail.gettext('support', 'tour'),
+						position: 'bottom-left-aligned'
 					});
 	
 				// taskbar
@@ -37,6 +47,8 @@ if (window.rcmail) {
 						"addressbook",
 						"cloud",
 						"calendar",
+						"files",
+						"notes",
 						"tasklist",
 						"settings"
 					].forEach(function(elm,inx,arr) {
@@ -110,6 +122,14 @@ if (window.rcmail) {
 						element: '#listcontrols',
 						intro: rcmail.gettext('messages_threads', 'tour'),
 						position: 'top'
+					});
+
+				// tags
+				if (rcmail.env.tour.taglist == true)
+					intros.push({
+						element: '#taglist',
+						intro: rcmail.gettext('taglist', 'tour'),
+						position: 'bottom-right-aligned'
 					});
 	
 			} // end action ""

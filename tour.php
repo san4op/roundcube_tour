@@ -71,21 +71,35 @@ class tour extends rcube_plugin
 		} else {
 			$plugins = array_filter((array) $this->rc->config->get('plugins'));
 		}
+
 		if (!in_array('cloud_button', $plugins)) {
 			$taskbar_buttons['cloud'] = false;
 		}
+
 		if (!in_array('calendar', $plugins)) {
 			$taskbar_buttons['calendar'] = false;
 		}
+
 		if (!in_array('tasklist', $plugins)) {
 			$taskbar_buttons['tasklist'] = false;
 		}
+
+		if (!in_array('kolab_notes', $plugins)) {
+			$taskbar_buttons['notes'] = false;
+		}
+
+		if (!in_array('kolab_files', $plugins)) {
+			$taskbar_buttons['files'] = false;
+		}
+
 		if (!in_array('archive', $plugins) || !$this->rc->config->get('archive_mbox')) {
 			$toolbar_buttons['archive'] = false;
 		}
+
 		if (!in_array('markasjunk', $plugins) && !in_array('markasjunk2', $plugins)) {
 			$toolbar_buttons['junk'] = false;
 		}
+
 		if (!in_array('managesieve', $plugins)) {
 			$settings_actions['pluginmanagesieve'] = false;
 			$settings_actions['pluginmanagesievevacation'] = false;
@@ -113,6 +127,7 @@ class tour extends rcube_plugin
 				$settings_actions['pluginmanagesievevacation'] = false;
 			}
 		}
+
 		if (!in_array('password', $plugins)) {
 			$settings_actions['pluginpassword'] = false;
 		}
@@ -120,12 +135,14 @@ class tour extends rcube_plugin
 		// make enviroment
 		$this->api->output->set_env('tour', array(
 			'welcome'			=> $this->rc->config->get('tour_welcome', true),
+			'support'			=> $this->rc->config->get('tour_support', true),
 			'taskbar'			=> $this->rc->config->get('tour_taskbar', true),
 			'taskbar_buttons'	=> $taskbar_buttons,
 			'toolbar'			=> $this->rc->config->get('tour_toolbar', true),
 			'toolbar_buttons'	=> $toolbar_buttons,
 			'folders'			=> $this->rc->config->get('tour_folders', true),
 			'quota'				=> $this->rc->config->get('tour_quota', true),
+			'taglist'			=> $this->rc->config->get('tour_taglist', true),
 			'messages_view'		=> $this->rc->config->get('tour_messages_view', true),
 			'messages_threads'	=> $this->rc->config->get('tour_messages_threads', true),
 			'settings'			=> $settings_actions,
